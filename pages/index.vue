@@ -1,19 +1,23 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center"></div>
-    </v-col>
-  </v-row>
+  <div>
+    <v-container>
+      <Hero />
+      <LargeCardDisplay
+        v-for="cardInfo in largeCardInfo"
+        :key="cardInfo.id"
+        :cardsSection="cardInfo"
+      />
+    </v-container>
+  </div>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
-import VuetifyLogo from "~/components/VuetifyLogo.vue";
-
+import { largeCardSections } from "@/assets/data.js";
 export default {
-  components: {
-    Logo,
-    VuetifyLogo,
+  data() {
+    return {
+      largeCardInfo: largeCardSections,
+    };
   },
 };
 </script>

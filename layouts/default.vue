@@ -1,10 +1,9 @@
 <template>
   <v-app>
     <v-main class="app">
-      <v-container>
-        <Navbar />
-        <nuxt />
-      </v-container>
+      <Navbar />
+
+      <nuxt />
     </v-main>
   </v-app>
 </template>
@@ -17,11 +16,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .app {
-  background-color: $background;
+  background: $background;
   font-family: "Nunito";
-  font-style: normal;
-  font-weight: 400;
 }
 </style>

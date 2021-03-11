@@ -1,7 +1,6 @@
 <template>
-  <v-container>
-    <v-app-bar>
-      <v-toolbar-title> <NuxtLink class = "navTitle" to="/">Home</NuxtLink></v-toolbar-title>
+  <v-container fluid>
+    <v-app-bar><v-toolbar-title> <NuxtLink class = "navTitle" to="/">Home</NuxtLink></v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-row>

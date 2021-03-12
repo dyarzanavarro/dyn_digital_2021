@@ -1,25 +1,30 @@
 <template>
   <v-container fluid>
-    <v-app-bar><v-toolbar-title> <NuxtLink class = "navTitle" to="/">Home</NuxtLink></v-toolbar-title>
+    <v-app-bar dense elevation="0" flat
+      ><v-toolbar-title>
+        <NuxtLink class="navTitle" to="/">
+          <v-img
+            :src="require('../assets/img/compass-divider.png')"
+            alt="compassLogo of dyn "
+            max-width="30" /></NuxtLink
+      ></v-toolbar-title>
       <v-spacer></v-spacer>
-
-      <v-row>
-        <v-col>
-          <NuxtLink class = "navTitle" to="/daniel">I</NuxtLink>
-        </v-col>
-        <v-col>
-          <NuxtLink class = "navTitle" to="/think">think</NuxtLink>
-                  </v-col>
-        <v-col>
-          <NuxtLink class = "navTitle" to="/stuff">stuff</NuxtLink>
-                  </v-col>
-        </v-col>
-      </v-row>
 
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute right temporary>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            daniel y. navarro
+          </v-list-item-title>
+          <v-list-item-subtitle> ready to set sail </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
       <v-list nav dense>
         <v-list-item-group
           v-model="group"
@@ -27,16 +32,29 @@
         >
           <v-list-item>
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>
+              <NuxtLink class="navTitle" to="/daniel">let's</NuxtLink>
+            </v-list-item-title>
           </v-list-item>
 
           <v-list-item>
             <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
+              <v-icon>mdi-star</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
+            <v-list-item-title>
+              <NuxtLink class="navTitle" to="/think">journey</NuxtLink>
+            </v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>mdi-compass</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>
+              <NuxtLink class="navTitle" to="/stuff">together</NuxtLink>
+            </v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -53,14 +71,10 @@ export default {
 </script>
 <style scoped>
 .navTitle {
-  font-size: 32px;
-  letter-spacing: -0.8px;
-  word-spacing: -3.4px;
+  font-size: 24px;
+  word-spacing: -1.5px;
   color: #000000;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
-  font-style: normal;
-  font-variant: normal;
-  text-transform: none;
 }
 </style>

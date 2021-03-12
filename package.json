@@ -11,9 +11,12 @@
   "dependencies": {
     "@nuxt/content": "^1.11.1",
     "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/firebase": "^7.5.0",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "firebase": "^8.3.0",
+    "nuxt": "^2.14.12",
+    "three": "^0.126.1"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.3"

@@ -1,15 +1,23 @@
 <template>
-  <v-row>
-    <v-col class="text-center">
-      <img src="/v.png" alt="Vuetify.js" class="mb-5" />
-      <blockquote class="blockquote">
-        &#8220;First, solve the problem. Then, write the code.&#8221;
-        <footer>
-          <small>
-            <em>&mdash;John Johnson</em>
-          </small>
-        </footer>
-      </blockquote>
-    </v-col>
-  </v-row>
+  <div>
+    <v-container>
+      <v-card><v-card-title>Test</v-card-title> </v-card>
+
+      <v-img
+        :src="require('../assets/img/daniel1_snow.jpg')"
+        max-height="350"
+        max-width="550"
+        alt="landingImage of Daniel in the snow"
+      />
+    </v-container>
+  </div>
 </template>
+
+<script>
+export default {
+  data: () => ({}),
+};
+</script>
+
+<style>
+</style>

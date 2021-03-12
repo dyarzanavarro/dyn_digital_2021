@@ -2,7 +2,6 @@
   <v-app>
     <v-main class="app">
       <Navbar />
-
       <nuxt />
     </v-main>
   </v-app>

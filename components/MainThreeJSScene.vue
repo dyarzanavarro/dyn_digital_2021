@@ -1,20 +1,38 @@
 <template>
-  <v-container
-    id="scene-container"
-    ref="sceneContainer"
-    style="height: 80vh"
-    fluid
-    ma-0
-    pa-0
-    fill-height
-  >
-  </v-container>
+  <div>
+    <v-container
+      id="scene-container"
+      ref="sceneContainer"
+      style="height: 80vh; position: relative"
+      fluid
+      ma-0
+      pa-0
+      fill-height
+    >
+      <v-container
+        style="
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: left;
+        "
+      >
+        <h1 style="color: #bc6ff1; font-size: 3.2rem">
+          I like digital experiences
+        </h1>
+        <h1 style="color: #892cdc; font-size: 2.7rem">and going outside</h1>
+      </v-container>
+    </v-container>
+  </div>
 </template>
 <script>
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { Water } from "three/examples/jsm/objects/Water";
-import { Sky } from "three/examples/jsm/objects/Sky";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { TransformControls } from "three/examples/jsm/controls/TransformControls.js";
+
 export default {
   name: "ThreeTest",
   data() {
@@ -31,23 +49,25 @@ export default {
       this.container = this.$refs.sceneContainer;
 
       // add camera
-      const fov = 60; // Field of view
+      const fov = 50; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
-      const near = 0.1; // the near clipping plane
-      const far = 80; // the far clipping plane
+      const near = 0.0001; // the near clipping plane
+      const far = 20000; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-      camera.position.set(1, 3, 1);
+
+      camera.position.set(1, 0.3, 3.8);
       this.camera = camera;
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color(0xf5f5f5);
+      this.scene.background = new THREE.Color(0x222222);
+
       // add lights
       const ambientLight = new THREE.HemisphereLight(
-        0xf9d71c, // bright sky color
-        0x222222, // dim ground color
+        0xb1e1ff, // bright sky color
+        0xb97a20, // dim ground color
         0.1 // intensity
       );
-      const mainLight = new THREE.DirectionalLight(0xffffff, 1.0);
+      const mainLight = new THREE.HemisphereLight(0xffffff, 0.1);
       mainLight.position.set(20, 20, 20);
       this.scene.add(ambientLight, mainLight);
 
@@ -67,113 +87,50 @@ export default {
         this.container.clientHeight
       );
 
-      //controls
+      const sphere = new THREE.SphereGeometry(1.25, 8, 8);
 
-      // Water
+      const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
 
-      let water;
+      const material = new THREE.MeshNormalMaterial();
 
-      const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
+      const earthmesh = new THREE.Mesh(sphere, material);
 
-      water = new Water(waterGeometry, {
-        textureWidth: 512,
-        textureHeight: 512,
-        waterNormals: new THREE.TextureLoader().load(
-          "textures/waternormals.jpg",
-          function (texture) {
-            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-          }
-        ),
-        alpha: 1.0,
-        sunDirection: new THREE.Vector3(),
-        sunColor: 0xf9d71c,
-        waterColor: 0x001e0f,
-        distortionScale: 3.7,
-      });
+      console.log(earthmesh.geometry.attributes.position);
 
-      water.rotation.x = -Math.PI / 2;
-      const time = performance.now() * 0.001;
-
-      water.material.uniforms["time"].value += 1.0 / 60.0;
-      this.scene.add(water);
-      //////////////////////////
-      // Skybox
-      let sun;
-      sun = new THREE.Vector3();
-
-      const sky = new Sky();
-      sky.scale.setScalar(10000);
-      this.scene.add(sky);
-
-      const skyUniforms = sky.material.uniforms;
-
-      skyUniforms["turbidity"].value = 10;
-      skyUniforms["rayleigh"].value = 2;
-      skyUniforms["mieCoefficient"].value = 0.005;
-      skyUniforms["mieDirectionalG"].value = 0.4;
-
-      const parameters = {
-        inclination: 0.48,
-        azimuth: 0.385,
-      };
-
-      const pmremGenerator = new THREE.PMREMGenerator(this.renderer);
-
-      function updateSun() {
-        const theta = Math.PI * (parameters.inclination - 0.5);
-        const phi = 2 * Math.PI * (parameters.azimuth - 0.5);
-
-        sun.x = Math.cos(phi);
-        sun.y = Math.sin(phi) * Math.sin(theta);
-        sun.z = Math.sin(phi) * Math.cos(theta);
-
-        sky.material.uniforms["sunPosition"].value.copy(sun);
-        water.material.uniforms["sunDirection"].value.copy(sun).normalize();
-
-        //this.scene.environment = pmremGenerator.fromScene(sky).texture;
-      }
-
-      updateSun();
-
-      //
-
-      const loader = new GLTFLoader();
-      loader.load(
-        "/model/boat.glb",
-        (gltf) => {
-          gltf.scene.position.set(-15, -0.5, 5);
-          gltf.scene.scale.set(0.02, 0.02, 0.02);
-
-          /*      gltf.position.y = Math.sin(time) * 0.2 + 5;
-          gltf.rotation.x = time * 0.05;
-          gltf.rotation.z = time * 0.51; */
-          this.scene.add(gltf.scene);
-        },
-        undefined,
-        undefined
-      );
+      earthmesh.position.set(2.5, 0.2, 0);
+      this.scene.add(earthmesh);
 
       this.renderer.setAnimationLoop(() => {
+        earthmesh.rotation.x += 0.008;
+        earthmesh.rotation.y += 0.008;
+
+        document.addEventListener("mousemove", onMouseMove);
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        function onMouseMove(event) {
+          mouseX = event.clientX / windowHalfX;
+          mouseY = event.clientY / windowHalfY;
+        }
+
         this.render();
       });
     },
     render() {
       this.renderer.render(this.scene, this.camera);
     },
-    onMouseMove() {
-      gltf.scene.rotation.y += event.movementX * 0.005;
-    },
   },
-  animate() {
-    requestAnimationFrame(animate);
-    render();
-  },
+
   mounted() {
     this.init();
-    // this.animate();
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>

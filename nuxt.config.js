@@ -72,6 +72,9 @@ export default {
     }
   },
 
+  server: {
+    host: "192.168.1.16"
+  },
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
 

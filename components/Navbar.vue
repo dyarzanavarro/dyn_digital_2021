@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-app-bar dense elevation="0" flat
+    <v-app-bar dense elevation="0" flat style="background-color: #222222"
       ><v-toolbar-title>
         <NuxtLink class="navTitle" to="/">
           <v-img
@@ -10,16 +10,17 @@
       ></v-toolbar-title>
       <v-spacer></v-spacer>
 
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        style="color: #f5f7fa"
+        @click="drawer = true"
+      ></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute right temporary>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="title">
-            daniel y. navarro
-          </v-list-item-title>
-          <v-list-item-subtitle> ready to set sail </v-list-item-subtitle>
+          <v-list-item-title class="title"> daniel </v-list-item-title>
+          <v-list-item-subtitle> judges you hard </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 

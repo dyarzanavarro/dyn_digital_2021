@@ -1,5 +1,9 @@
 {
   "hosting": {
+    "source": "functions",
+    "predeploy": [
+      "rm -rf functions/.nuxt && npm --prefix src run build && mkdir -p functions/.nuxt/dist && cp -r src/.nuxt/dist/ functions/.nuxt/dist && cp src/nuxt.config.js functions/"
+    ],
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -9,5 +13,11 @@
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "**",
+      "function": "ssrapp"
+    }
+  ]
 }

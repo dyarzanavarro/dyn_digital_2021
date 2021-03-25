@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-main class="app">
+  <v-app fluid style="overflow-x: hidden">
+    <v-main fluid class="app">
       <Navbar />
       <nuxt />
     </v-main>
@@ -19,5 +19,10 @@ export default {
 .app {
   background: $background;
   font-family: "Nunito";
+  overflow-x: hidden;
+}
+html,
+body {
+  overflow-x: hidden;
 }
 </style>

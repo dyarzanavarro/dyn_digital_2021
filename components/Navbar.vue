@@ -20,7 +20,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title"> daniel </v-list-item-title>
-          <v-list-item-subtitle> judges you hard </v-list-item-subtitle>
+          <v-list-item-subtitle> was here </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -45,7 +45,7 @@
               <v-icon>mdi-star</v-icon>
             </v-list-item-icon>
             <v-list-item-title>
-              <NuxtLink class="navTitle" to="/think">journey</NuxtLink>
+              <NuxtLink class="navTitle" to="/journey">journey</NuxtLink>
             </v-list-item-title>
           </v-list-item>
 
@@ -54,7 +54,7 @@
               <v-icon>mdi-compass</v-icon>
             </v-list-item-icon>
             <v-list-item-title>
-              <NuxtLink class="navTitle" to="/stuff">together</NuxtLink>
+              <NuxtLink class="navTitle" to="/together">together</NuxtLink>
             </v-list-item-title>
           </v-list-item>
         </v-list-item-group>

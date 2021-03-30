@@ -20,9 +20,7 @@
         text-align: left;
       "
     >
-      <h1 style="color: #bc6ff1; font-size: 3.2rem">
-        I like digital experiences
-      </h1>
+      <h1 style="color: #bc6ff1; font-size: 3.2rem">I like creating stuff</h1>
       <h1 style="color: #892cdc; font-size: 2.7rem; padding-bottom: 1.2rem">
         and sleep
       </h1>

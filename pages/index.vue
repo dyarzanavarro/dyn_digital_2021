@@ -1,34 +1,57 @@
 <template>
-  <v-container fluid>
-    <MainThreeJSScene />
-    <v-container
-      style="
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: left;
-      "
+  <v-container class="landingSection">
+    <v-row align="center" justify="center" no-gutters>
+      <v-col class="d-flex justify-center" md="5" offset-md="2">
+        <v-container>
+          <transition name="fade" appear>
+            <h1 class="textField1">Hello.</h1>
+          </transition>
+          <h1 class="textField2">I've been expecting you</h1>
+        </v-container>
+      </v-col></v-row
     >
-      <h1 style="color: #bc6ff1; font-size: 3.2rem">
-        I like digital experiences
-      </h1>
-      <h1 style="color: #892cdc; font-size: 2.7rem; padding-bottom: 1.4rem">
-        and going outside
-      </h1>
-      <v-btn rounded color="#bc6ff1" dark>Me too</v-btn>
-    </v-container>
+    <MainThreeJSScene />
   </v-container>
 </template>
+     
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      show: false,
+    };
+  },
+  mounted() {
+    this.show = true; // might need this.$nextTick
   },
 };
 </script>
 
 <style>
+.landingSection {
+  position: absolute;
+}
+a {
+  text-decoration: none;
+}
+
+.textField1 {
+  font-size: 3.5rem;
+  color: #f5f7fa !important;
+}
+.textField2 {
+  font-size: 3.5rem;
+  color: #f5f7fa !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

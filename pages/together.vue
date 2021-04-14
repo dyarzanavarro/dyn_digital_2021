@@ -14,37 +14,15 @@
       style="
         text-align: center;
         position: absolute;
-        top: 40%;
-        left: 60%;
+        top: 50%;
+        left: 80%;
         transform: translate(-50%, -50%);
         text-align: left;
       "
     >
-      <h1 style="color: #bc6ff1; font-size: 3.2rem">I like creating stuff</h1>
-      <h1 style="color: #892cdc; font-size: 2.7rem; padding-bottom: 1.2rem">
-        and sleep
-      </h1>
-      <v-btn rounded color="#8A00FF" dark>Find out more</v-btn>
-    </v-container>
-    <v-container>
-      <v-row>
-        <v-col>
-          <h1 style="color: #f5f7fa">
-            It seems we're destined to do this forever Batman
-          </h1>
-          <v-card style="max-width: 300px"
-            ><v-card-title
-              >TestmeOut
-              <v-card-text
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-                ducimus impedit aut. Alias officia quibusdam quia fugit,
-                voluptatem tempora unde aliquam laudantium ea numquam qui ex.
-                Tempore quia iure odio.
-              </v-card-text></v-card-title
-            ></v-card
-          >
-        </v-col>
-      </v-row>
+      <v-btn class="shake" x-large outlined color="#bc6ff1" dark
+        >BREAK FREE</v-btn
+      >
     </v-container>
   </div>
 </template>
@@ -70,6 +48,14 @@ export default {
 
       // add camera
       const fov = 50; // Field of view
+      const targetAspect =
+        this.container.clientWidth / this.container.clientHeight;
+      const imageWidth = 1920;
+      const imageHeight = 1080;
+
+      const imageAspect = imageWidth / imageHeight;
+      const factor = imageAspect / targetAspect;
+
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.0001; // the near clipping plane
       const far = 20000; // the far clipping plane
@@ -88,9 +74,16 @@ export default {
       this.camera = camera;
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color(0x222222);
-
-      // add lights
+      this.scene.background = new THREE.Color(0x232236);
+      const backgroundimg = new THREE.TextureLoader().load(
+        "textures/background_guy.png"
+      );
+      /*    this.scene.background = backgroundimg;
+      this.scene.background.offset.x = factor > 1 ? (1 - 1 / factor) / 2 : 0;
+      this.scene.background.repeat.x = factor > 1 ? 1 / factor : 1;
+      this.scene.background.offset.y = factor > 1 ? 0 : (1 - factor) / 2;
+      this.scene.background.repeat.y = factor > 1 ? 1 : factor;
+      // add lights */
       const ambientLight = new THREE.HemisphereLight(
         0xb1e1ff, // bright sky color
         0xb97a20, // dim ground color
@@ -116,23 +109,29 @@ export default {
         this.container.clientHeight
       );
 
-      const sphere = new THREE.PlaneGeometry(6.5, 5, 6);
+      const geometry2 = new THREE.SphereGeometry(0.1, 12, 12);
+      const geometry1 = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+      const material1 = new THREE.MeshBasicMaterial({
+        opacity: 0.2,
+        transparency: true,
+        color: "blue",
+      });
 
-      const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
+      const material2 = new THREE.MeshNormalMaterial();
 
-      const material = new THREE.MeshNormalMaterial();
+      const sphere2 = new THREE.Mesh(geometry2, material2);
+      const plane = new THREE.Mesh(geometry1, material1);
+      sphere2.position.set(0.4, 0.8, 0.7);
+      plane.position.set(2.3, 0.5, 1);
 
-      const earthmesh = new THREE.Mesh(sphere, material);
+      sphere2.renderOrder = 3;
+      plane.renderOrder = 4;
 
-      console.log(earthmesh.geometry.attributes.position);
+      this.scene.add(sphere2, plane);
 
-      earthmesh.position.set(1, 0.2, 0);
-      this.scene.add(earthmesh);
+      // ANIMATION
 
       this.renderer.setAnimationLoop(() => {
-        earthmesh.rotation.x += 0.004;
-        earthmesh.rotation.y += 0.004;
-
         document.addEventListener("mousemove", onMouseMove);
         let mouseX = 0;
         let mouseY = 0;
@@ -160,3 +159,28 @@ export default {
   },
 };
 </script>
+<style>
+.shake:hover {
+  animation: shake 0.82s cubic-bezier(0.41, 0.1, 0.25, 1) both;
+  transform: translate3d(0, 0, 0);
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+</style>

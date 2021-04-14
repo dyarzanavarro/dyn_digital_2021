@@ -44,7 +44,7 @@ export default {
       this.camera = camera;
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color(0x222222);
+      this.scene.background = new THREE.Color(0x232236);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
@@ -72,22 +72,25 @@ export default {
         this.container.clientHeight
       );
 
-      const sphere = new THREE.SphereGeometry(1.25, 8, 8);
+      const sphere = new THREE.SphereGeometry(0.8, 7, 9);
 
       const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
 
-      const material = new THREE.MeshNormalMaterial();
+      const material = new THREE.MeshNormalMaterial({
+        opacity: 0.3,
+        transparent: true,
+      });
 
       const earthmesh = new THREE.Mesh(sphere, material);
 
       console.log(earthmesh.geometry.attributes.position);
 
-      earthmesh.position.set(2.5, 0.2, 0);
+      earthmesh.position.set(1, 1.1, 0);
       this.scene.add(earthmesh);
 
       this.renderer.setAnimationLoop(() => {
-        earthmesh.rotation.x += 0.008;
-        earthmesh.rotation.y += 0.008;
+        earthmesh.rotation.x += 0.01;
+        earthmesh.rotation.y += 0.01;
 
         document.addEventListener("mousemove", onMouseMove);
         let mouseX = 0;

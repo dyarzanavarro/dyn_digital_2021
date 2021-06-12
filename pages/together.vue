@@ -3,7 +3,8 @@
     <v-container
       id="scene-container"
       ref="sceneContainer"
-      style="height: 80vh; position: relative"
+      style="height: 100vh"
+      class="webgl"
       fluid
       ma-0
       pa-0
@@ -23,6 +24,21 @@
       <v-btn class="shake" x-large outlined color="#bc6ff1" dark
         >BREAK FREE</v-btn
       >
+    </v-container>
+    <v-container>
+      <h1>Get in touch</h1>
+      <v-row>
+        <v-col>
+          <v-avatar>Social Media Icon 1</v-avatar>
+        </v-col>
+        <v-col>
+          <v-avatar>Social Media Icon 2</v-avatar>
+        </v-col>
+        <v-col>
+          <v-avatar>Social Media Icon 3</v-avatar>
+        </v-col>
+      </v-row>
+      <InputFeeling />
     </v-container>
   </div>
 </template>
@@ -182,5 +198,8 @@ export default {
   60% {
     transform: translate3d(4px, 0, 0);
   }
+}
+.webgl {
+  outline: none;
 }
 </style>

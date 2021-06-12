@@ -1,6 +1,27 @@
 <template>
   <div>
-    <v-container id="scene-container" ref="sceneContainer"> </v-container>
+    <v-container id="scene-container" ref="sceneContainer">
+      <v-row>
+        <v-col></v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-card
+            ><v-card-title></v-card-title><v-card-text></v-card-text
+          ></v-card>
+        </v-col>
+        <v-col>
+          <v-card
+            ><v-card-title></v-card-title><v-card-text></v-card-text
+          ></v-card>
+        </v-col>
+        <v-col>
+          <v-card
+            ><v-card-title></v-card-title><v-card-text></v-card-text
+          ></v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 <script lang="ts">

@@ -3,7 +3,8 @@
     <v-container
       id="scene-container"
       ref="sceneContainer"
-      style="height: 80vh; position: relative"
+      style="height: 100vh"
+      class="webgl"
       fluid
       ma-0
       pa-0
@@ -16,7 +17,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { TransformControls } from "three/examples/jsm/controls/TransformControls.js";
+import { DragControls } from "three/examples/jsm/controls/DragControls.js";
 
 export default {
   name: "ThreeTest",
@@ -72,39 +73,43 @@ export default {
         this.container.clientHeight
       );
 
-      const sphere = new THREE.SphereGeometry(0.8, 7, 9);
+      const sphere = new THREE.SphereGeometry(0.7, 8, 8);
 
-      const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
+      let color1 = new THREE.Color("#8023ea");
+      let color2 = new THREE.Color("#ff058a");
+      let color3 = new THREE.Color("#f5f50a");
 
       const material = new THREE.MeshNormalMaterial({
         opacity: 0.3,
         transparent: true,
       });
+      sphere.attributes.position.needsUpdate = true;
 
       const earthmesh = new THREE.Mesh(sphere, material);
-
-      console.log(earthmesh.geometry.attributes.position);
 
       earthmesh.position.set(1, 1.1, 0);
       this.scene.add(earthmesh);
 
+      if (earthmesh.isMesh) {
+        const position = earthmesh.geometry.attributes.position;
+        const vector = new THREE.Vector3();
+
+        for (let i = 0, l = position.count; i < l; i++)
+          vector.fromBufferAttribute(position, i);
+        vector.applyMatrix4(earthmesh.matrixWorld);
+        console.log(vector);
+        vector.length = 0;
+
+        this.controls = new DragControls(
+          [earthmesh],
+          this.camera,
+          this.renderer.domElement
+        );
+      }
+
       this.renderer.setAnimationLoop(() => {
         earthmesh.rotation.x += 0.01;
         earthmesh.rotation.y += 0.01;
-
-        document.addEventListener("mousemove", onMouseMove);
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-
-        const windowHalfX = window.innerWidth / 2;
-        const windowHalfY = window.innerHeight / 2;
-
-        function onMouseMove(event) {
-          mouseX = event.clientX / windowHalfX;
-          mouseY = event.clientY / windowHalfY;
-        }
 
         this.render();
       });

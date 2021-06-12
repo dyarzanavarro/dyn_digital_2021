@@ -75,6 +75,7 @@ export default {
 
   server: {
     host: "192.168.1.16"
+    //host: "localhost"
   },
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
@@ -83,7 +84,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      dark: true,
       themes: {
         dark: {
           primary: colors.blue.darken2,

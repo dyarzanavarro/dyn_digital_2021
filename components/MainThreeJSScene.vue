@@ -45,15 +45,15 @@ export default {
       this.camera = camera;
       // create scene
       this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color(0x232236);
+      this.scene.background = new THREE.Color(0xf5f7fa);
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
         0xb1e1ff, // bright sky color
         0xb97a20, // dim ground color
-        0.1 // intensity
+        0.4 // intensity
       );
-      const mainLight = new THREE.HemisphereLight(0xffffff, 0.1);
+      const mainLight = new THREE.HemisphereLight(0xffffff, 0.4);
       mainLight.position.set(20, 20, 20);
       this.scene.add(ambientLight, mainLight);
 
@@ -73,14 +73,14 @@ export default {
         this.container.clientHeight
       );
 
-      const sphere = new THREE.SphereGeometry(0.7, 8, 8);
+      const sphere = new THREE.SphereGeometry(0.2, 8, 8);
 
       let color1 = new THREE.Color("#8023ea");
       let color2 = new THREE.Color("#ff058a");
       let color3 = new THREE.Color("#f5f50a");
 
       const material = new THREE.MeshNormalMaterial({
-        opacity: 0.3,
+        opacity: 0.8,
         transparent: true,
       });
       sphere.attributes.position.needsUpdate = true;

@@ -1,7 +1,7 @@
 <template>
   <v-app fluid style="overflow-x: hidden">
     <v-main fluid class="app">
-      <Navbar style="z-index: 100; height: 0px !important" />
+      <Navbar style="z-index: 999" />
       <nuxt class="ma-0 pa-0" />
     </v-main>
   </v-app>
@@ -36,5 +36,8 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
+}
+h1 {
+  color: $primary !important;
 }
 </style>

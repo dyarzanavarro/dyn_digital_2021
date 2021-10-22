@@ -1,11 +1,11 @@
 <template>
-  <div style="padding-top: 6rem !important">
+  <div>
     <v-container class="landingSection pa-md-8">
       <h1
-        class="white--text text--lighten-2 text-md-h1"
+        class="text-md-h1"
         style="font-family: Nunito, sans-serif !important; font-weight: 700"
       >
-        Usability starts with collaboration
+        I can help you visualize, craft and improve your business.
       </h1>
 
       <h2 class="grey--text text--lighten-1">
@@ -14,19 +14,7 @@
         today
       </h2>
     </v-container>
-    <v-container class="pa-md-8">
-      <v-row
-        ><v-col>
-          <v-card style="background-color: #232236">
-            <h1>Element 1</h1>
-          </v-card></v-col
-        >
 
-        <v-col>
-          <v-card style="background-color: #232236"><h1>Element 2</h1></v-card>
-        </v-col></v-row
-      >
-    </v-container>
     <MainThreeJSScene class="webgl" />
   </div>
 </template>
@@ -92,8 +80,7 @@ a {
 .fade-leave-to {
   opacity: 0;
 }
-.landingSection {
-}
+
 .webgl {
   outline: none;
 }

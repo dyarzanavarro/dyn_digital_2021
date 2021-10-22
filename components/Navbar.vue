@@ -1,6 +1,6 @@
 <template>
   <v-toolbar prominent color="transparent" elevation="0">
-    <v-toolbar-title style="align-self: center !important; margin-top: -1.5rem">
+    <v-toolbar-title style="align-self: center !important" class="pa-md-6">
       <NuxtLink to="/">
         <v-avatar class="avatarLogo" size="56"></v-avatar
       ></NuxtLink>
@@ -8,20 +8,26 @@
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <NuxtLink class="navTitle" to="/daniel">me</NuxtLink>
+      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/daniel"
+        ><h4>daniel</h4>
+      </NuxtLink>
 
-      <NuxtLink class="navTitle" to="/together">you</NuxtLink>
+      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/work"
+        ><h4>work</h4></NuxtLink
+      >
+
+      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/contact"
+        ><h4>contact</h4></NuxtLink
+      >
     </v-toolbar-items>
   </v-toolbar>
 </template>
 <script>
 export default {};
 </script>
-<style scoped>
+<style scoped lang="scss">
 .navTitle {
-  font-size: 1.5rem;
-  color: #f5f7fa;
-  padding: 1.5rem;
+  padding: 1rem;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
 }

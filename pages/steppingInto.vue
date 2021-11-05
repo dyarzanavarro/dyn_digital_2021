@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container> </v-container>
+    <v-container class="pa-6"> </v-container>
   </div>
 </template>
 

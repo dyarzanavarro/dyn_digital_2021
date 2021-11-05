@@ -15,7 +15,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 html {
   overflow: hidden !important;
   scrollbar-width: none;
@@ -39,5 +39,18 @@ body {
 }
 h1 {
   color: $primary !important;
+}
+a {
+  color: $primary !important;
+}
+.button {
+  color: $primary !important;
+}
+.v-toolbar__content {
+  padding: 0 !important;
+}
+
+#app > div > main > div > div.container.pa-6 > header {
+  height: 68px !important;
 }
 </style>

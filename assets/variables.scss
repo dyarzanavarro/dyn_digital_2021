@@ -2,7 +2,10 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
-
+:root {
+    --app-background-color: #f5f7fa;
+    
+}
 
 $background:#f5f7fa;
 $dark: #37474f;
@@ -13,3 +16,17 @@ $tertiary: #52057b;
 $text-field-line-height: 3rem;
 $body-font-family: 'Nunito';
 $font-family: 'Nunito';
+$material-light: (
+  'background': #f5f7fa
+);
+
+.v-application {
+  [class*='text-'] {
+    font-family: $font-family !important;
+  }
+  font-family: $font-family!important;
+}
+
+a{
+  text-decoration: none;
+}

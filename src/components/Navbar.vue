@@ -76,6 +76,5 @@ export default {
   word-spacing: -1.5px;
   color: #000000;
   font-weight: 700;
-  text-decoration: none solid rgb(68, 68, 68);
 }
 </style>

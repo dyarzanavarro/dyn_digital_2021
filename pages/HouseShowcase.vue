@@ -1,21 +1,18 @@
 <template>
-  <div style="background-color: #f5f7fa !important; height: 400vh">
-    <v-container fluid class="pa-0 ma-0 rounded-xl" :elevation="8">
+  <div style="background-color: #f5f7fa !important" :elevation="8">
+    <v-container class="pa-6 rounded-xl">
       <v-img
         :src="require('../assets/img/casa_1.png')"
-        alt="landingImage of House in Tenerife"
+        alt="landingImage of House in
+      Tenerife"
+        style="top: -4rem"
       />
       <v-container
-        style="
-          position: absolute;
-          top: 7rem;
-          left: 1.9rem;
-          padding-left: 1.5rem;
-        "
+        style="position: absolute; top: 16rem; left: 8rem; padding-left: 1.5rem"
       >
-        <h1 class="stageTitle">
+        <h2 class="stageTitle">
           Fortress of <span class="solitudeForm">Solitude</span>
-        </h1>
+        </h2>
         <v-row>
           <v-col md="6">
             <p class="stageText text-wrap">
@@ -113,7 +110,7 @@ export default {};
 <style lang="scss" scoped>
 .stageTitle {
   font-size: 4rem;
-  color: $background;
+  color: $dark;
 }
 .solitudeForm {
   position: relative;
@@ -134,7 +131,7 @@ export default {};
 }
 .stageText {
   font-size: 2rem;
-  color: $background;
+  color: $dark;
 }
 .mainCTA {
   background-color: #f7c6b1 !important;

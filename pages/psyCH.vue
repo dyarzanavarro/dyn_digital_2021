@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container id="scene-container" ref="sceneContainer">
+    <v-container id="scene-container" ref="sceneContainer" class="pa-6">
       <v-row>
         <v-col></v-col>
       </v-row>

@@ -16,7 +16,6 @@
 <script>
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { DragControls } from "three/examples/jsm/controls/DragControls.js";
 
 export default {
@@ -88,7 +87,7 @@ export default {
       const earthmesh = new THREE.Mesh(sphere, material);
 
       earthmesh.position.set(1, 1.1, 0);
-      this.scene.add(earthmesh);
+      //this.scene.add(earthmesh);
 
       if (earthmesh.isMesh) {
         const position = earthmesh.geometry.attributes.position;
@@ -106,6 +105,26 @@ export default {
           this.renderer.domElement
         );
       }
+
+      //loader
+
+      const loader = new GLTFLoader();
+      loader.load("model/scene.gltf", (gltf) => {
+        gltf.scene.position.set(1.2, 2, -5);
+        gltf.scene.scale.set(0.006, 0.006, 0.006);
+        gltf.scene.rotation.y += 0;
+        this.scene.add(gltf.scene);
+      });
+
+      /*gltf.position.y = Math.sin(time) * 0.2 + 5;
+          gltf.rotation.x = time * 0.05;
+          gltf.rotation.z = time * 0.51; 
+          this.scene.add(gltf.scene);
+        },
+        undefined,
+        undefined
+      );
+*/
 
       this.renderer.setAnimationLoop(() => {
         earthmesh.rotation.x += 0.01;

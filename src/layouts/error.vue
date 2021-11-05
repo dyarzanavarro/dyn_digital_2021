@@ -1,5 +1,5 @@
 <template>
-  <v-app dark class="main">
+  <v-app class="main">
     <v-container>
       <v-card>
         <v-card-title>

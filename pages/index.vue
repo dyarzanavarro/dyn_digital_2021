@@ -1,21 +1,14 @@
 <template>
   <div>
-    <v-container class="landingSection pa-md-8">
-      <h1
-        class="text-md-h1"
-        style="font-family: Nunito, sans-serif !important; font-weight: 700"
+    <v-container class="pa-6">
+      <v-container>
+        <h2 class="grey--text text--lighten-1">
+          My current mood: I feel
+          <span class="randomFeeling">{{ selectedFeeling }}</span>
+          today
+        </h2></v-container
       >
-        I can help you visualize, craft and improve your business.
-      </h1>
-
-      <h2 class="grey--text text--lighten-1">
-        My current mood: I feel
-        <span class="randomFeeling">{{ selectedFeeling }}</span>
-        today
-      </h2>
     </v-container>
-
-    <MainThreeJSScene class="webgl" />
   </div>
 </template>
      
@@ -58,7 +51,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 a {
   text-decoration: none;
 }
@@ -84,6 +77,11 @@ a {
 .webgl {
   outline: none;
 }
+
+.specialLinks {
+  color: #892cdc;
+}
+
 .randomFeeling:hover {
   color: #bc6ff1;
 }

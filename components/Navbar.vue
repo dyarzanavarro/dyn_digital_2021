@@ -1,26 +1,28 @@
 <template>
-  <v-toolbar prominent color="transparent" elevation="0">
-    <v-toolbar-title style="align-self: center !important" class="pa-md-6">
-      <NuxtLink to="/">
-        <v-avatar class="avatarLogo" size="56"></v-avatar
-      ></NuxtLink>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
+  <v-container class="pa-6">
+    <v-toolbar prominent color="transparent" elevation="0">
+      <v-toolbar-title style="align-self: center !important">
+        <NuxtLink to="/">
+          <v-avatar class="avatarLogo" size="56"></v-avatar
+        ></NuxtLink>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
 
-    <v-toolbar-items>
-      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/daniel"
-        ><h4>daniel</h4>
-      </NuxtLink>
+      <v-toolbar-items>
+        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/daniel"
+          ><h4>daniel</h4>
+        </NuxtLink>
 
-      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/work"
-        ><h4>work</h4></NuxtLink
-      >
+        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/work"
+          ><h4>work</h4></NuxtLink
+        >
 
-      <NuxtLink style="margin-top: 1.5rem" class="navTitle" to="/contact"
-        ><h4>contact</h4></NuxtLink
-      >
-    </v-toolbar-items>
-  </v-toolbar>
+        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/contact"
+          ><h4>contact</h4></NuxtLink
+        >
+      </v-toolbar-items>
+    </v-toolbar>
+  </v-container>
 </template>
 <script>
 export default {};

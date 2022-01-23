@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import path from 'path'
+import fs from 'fs'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -19,7 +21,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
-
+  script: [{
+    src: 'https://aframe.io/releases/0.7.1/aframe.min.js'
+  }],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -74,8 +78,11 @@ export default {
   },
 
   server: {
-    host: "192.168.1.16"
-    //host: "localhost"
+    host: "192.168.1.158",
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
+    }
   },
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},

@@ -1,7 +1,7 @@
 <template>
-  <v-app fluid style="overflow-x: hidden">
+  <v-app class="app">
+    <Navbar app style="z-index: 999" />
     <v-main fluid class="app">
-      <Navbar style="z-index: 999" />
       <nuxt class="ma-0 pa-0" />
     </v-main>
   </v-app>
@@ -16,26 +16,10 @@ export default {
 </script>
 
 <style lang="scss">
-html {
-  overflow: hidden !important;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-html::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
 .app {
-  background: $background;
+  background: $background !important;
   font-family: "Nunito";
   overflow-x: hidden;
-}
-html,
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100vh;
 }
 h1 {
   color: $primary !important;
@@ -45,12 +29,5 @@ a {
 }
 .button {
   color: $primary !important;
-}
-.v-toolbar__content {
-  padding: 0 !important;
-}
-
-#app > div > main > div > div.container.pa-6 > header {
-  height: 68px !important;
 }
 </style>

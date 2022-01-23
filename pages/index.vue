@@ -1,54 +1,19 @@
 <template>
   <div>
-    <v-container class="pa-6">
-      <v-container>
-        <h2 class="grey--text text--lighten-1">
-          My current mood: I feel
-          <span class="randomFeeling">{{ selectedFeeling }}</span>
-          today
-        </h2></v-container
-      >
+    <v-container class="pa-12">
+      <h1 style="font-size: 4.4rem">I'M DANIEL,</h1>
+      <h2>A UX DESIGNER LOCATED IN ZÜRICH, SWIZERLAND 🇨🇭</h2>
+      <h4 class="mt-6">
+        Here you can find more information about me, my design process and what
+        I have been working on.
+      </h4>
     </v-container>
   </div>
 </template>
      
 
 <script>
-export default {
-  data() {
-    return {
-      feelings: [
-        "fine",
-        "pretty good",
-        "blue",
-        "selectedfeeling😊",
-        "like going for a walk",
-        "bored",
-        "excited 🌟",
-        "like listening to music 🎵",
-        "like staring into a tiny screen 🖥️",
-        "excellent",
-        "like writing some code",
-        "like designing some stuff",
-      ],
-      selectedFeeling: "",
-      styleObject: {
-        color: "red",
-        fontSize: "1.4rem",
-        background: "red",
-      },
-      selectedStyle: "",
-    };
-  },
-  created() {
-    const idx = Math.floor(Math.random() * this.feelings.length);
-    this.selectedFeeling = this.feelings[idx];
-
-    const styleidx = Math.floor(Math.random() * this.selectedFeeling.length);
-    this.selectedStyle =
-      this.styleObject[styleidx] + this.styleObject[styleidx];
-  },
-};
+export default {};
 </script>
 
 <style scoped>

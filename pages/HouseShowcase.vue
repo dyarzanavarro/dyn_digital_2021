@@ -1,14 +1,6 @@
 <template>
-  <div style="background-color: #f5f7fa !important" :elevation="8">
-    <v-container class="pa-6 rounded-xl">
-      <v-img
-        :src="require('../assets/img/casa_1.png')"
-        alt="landingImage of House in
-      Tenerife"
-        style="top: -4rem"
-      />
-      <v-container
-        style="position: absolute; top: 16rem; left: 8rem; padding-left: 1.5rem"
+  <div >
+          <v-container class = "heroElement"
       >
         <h2 class="stageTitle">
           Fortress of <span class="solitudeForm">Solitude</span>
@@ -23,7 +15,6 @@
         </v-row>
         <v-btn :elevation="8" class="mainCTA rounded-pill">Explore</v-btn>
       </v-container>
-    </v-container>
     <v-container>
       <v-row>
         <v-col md="6" class="pa-12"
@@ -108,14 +99,24 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
+.heroElement{
+ background: url('../assets/img/casa_1.png') no-repeat center center;
+  background-size: cover;
+  margin-top: -12rem;
+  height: 50rem;
+}
 .stageTitle {
-  font-size: 4rem;
+  font-size: 3rem;
   color: $dark;
+  margin-top: 14rem;
+  padding: 1rem;
 }
 .solitudeForm {
   position: relative;
   display: inline-block;
   z-index: 100;
+
 }
 .solitudeForm:after {
   border-bottom: 0.125em #f7c6b1;
@@ -132,11 +133,15 @@ export default {};
 .stageText {
   font-size: 2rem;
   color: $dark;
+  padding: 1rem;
+
 }
 .mainCTA {
   background-color: #f7c6b1 !important;
   color: $background;
   font-weight: 700;
+ margin-left: 1rem;
+
 }
 .featureTitle {
   color: $background;
@@ -144,7 +149,7 @@ export default {};
   padding-bottom: 1rem;
 }
 .featureText {
-  color: $background;
+  color: $dark;
   font-size: 1.5rem;
   font-weight: 400;
 }

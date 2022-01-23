@@ -1,45 +1,90 @@
 <template>
-  <v-container class="pa-6">
-    <v-toolbar prominent color="transparent" elevation="0">
-      <v-toolbar-title style="align-self: center !important">
+  <v-container>
+    <v-toolbar flat color="transparent" class="mainHeader">
+      <v-toolbar-title style="align-self: center !important; width: 5rem">
         <NuxtLink to="/">
           <v-avatar class="avatarLogo" size="56"></v-avatar
         ></NuxtLink>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-container nav dense class="hidden-xs-only">
+        <v-row no-gutters>
+          <v-col cols="6" md="3" lg="6" sm="3"></v-col>
+          <v-col cols="4" md="3" lg="2" sm="3" class="text-right">
+            <NuxtLink class="navTitle" to="/daniel"><h2>Daniel</h2> </NuxtLink>
+          </v-col>
+          <v-col cols="4" md="3" lg="2" sm="3" class="text-right">
+            <NuxtLink class="navTitle" to="/work"><h2>Work</h2></NuxtLink>
+          </v-col>
+          <v-col cols="4" md="3" lg="2" sm="3" class="text-right">
+            <NuxtLink class="navTitle" to="/contact"><h2>Contact</h2></NuxtLink>
+          </v-col>
+        </v-row>
+      </v-container>
 
-      <v-toolbar-items>
-        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/daniel"
-          ><h4>daniel</h4>
-        </NuxtLink>
-
-        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/work"
-          ><h4>work</h4></NuxtLink
+      <div class="hidden-sm-and-up">
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-navigation-drawer
+          v-model="drawer"
+          absolute
+          right
+          height="auto"
+          width="100%"
         >
-
-        <NuxtLink style="margin-top: 2rem" class="navTitle" to="/contact"
-          ><h4>contact</h4></NuxtLink
-        >
-      </v-toolbar-items>
+          <v-list nav dense>
+            <v-list-item right>
+              <v-list-item-title class="text-right">
+                <v-app-bar-nav-icon
+                  @click.stop="drawer = !drawer"
+                  right
+                  class="text-right"
+                  ><v-icon>mdi-close-circle-outline</v-icon></v-app-bar-nav-icon
+                ></v-list-item-title
+              >
+            </v-list-item>
+            <v-list-item right>
+              <v-list-item-title class="text-center">
+                <NuxtLink class="navTitle" to="/daniel"
+                  ><h1>Daniel</h1>
+                </NuxtLink></v-list-item-title
+              >
+            </v-list-item>
+            <v-list-item class="text-center">
+              <v-list-item-title
+                ><NuxtLink class="navTitle" to="/work"
+                  ><h1>Work</h1></NuxtLink
+                ></v-list-item-title
+              >
+            </v-list-item>
+            <v-list-item class="text-center">
+              <v-list-item-title>
+                <NuxtLink class="navTitle" to="/contact"
+                  ><h1>Contact</h1></NuxtLink
+                ></v-list-item-title
+              >
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+      </div>
     </v-toolbar>
   </v-container>
 </template>
 <script>
-export default {};
+export default {
+  data: () => ({
+    drawer: null,
+    group: null,
+  }),
+
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
-.navTitle {
-  padding: 1rem;
-  font-weight: 700;
-  text-decoration: none solid rgb(68, 68, 68);
-}
-
-.navTitle:hover {
-  color: #bc6ff1;
-}
-
 .avatarLogo {
   background-image: linear-gradient(to bottom left, #f5f50a, #ff058a, #8023ea);
-  padding: 0.9rem;
 }
 </style>

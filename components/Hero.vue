@@ -90,7 +90,7 @@ export default {
             "new site, styling, frontend, backend & cms: A university wanted a place for diversity",
           order: "order-md-12",
           flex: 6,
-          src: "steppingInto",
+          src: "casa_1",
         },
       ],
     };

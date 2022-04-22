@@ -46,6 +46,6 @@ h1 {
 }
 .main {
   background: $background !important;
-  font-family: "Nunito";
+  font-family: "Roboto";
 }
-</style?scoped>
+</style scoped>

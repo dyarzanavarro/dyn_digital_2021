@@ -1,19 +1,28 @@
 <template>
   <div>
     <v-container class="pa-12">
-      <h1 style="font-size: 4.4rem">I'M DANIEL,</h1>
-      <h2>A UX DESIGNER LOCATED IN ZÜRICH, SWIZERLAND 🇨🇭</h2>
-      <h4 class="mt-6">
-        Here you can find more information about me, my design process and what
-        I have been working on.
-      </h4>
+      <div class="text-h2 font-weight-bold">
+        Daniel is a passionate UX advocate living in Zurich 🇨🇭
+      </div>
+      <div class="text-h6 mt-3">
+        He often flirts with Scrum, Behavioural Economics & Design Thinking
+      </div>
+    </v-container>
+    <v-container class="pa-12">
+      <div class="text-h2 font-weight-bold">Some products I've worked on</div>
+      <Hero />
     </v-container>
   </div>
 </template>
      
 
 <script>
-export default {};
+import Hero from "../components/Hero.vue";
+export default {
+  components: {
+    Hero,
+  },
+};
 </script>
 
 <style scoped>

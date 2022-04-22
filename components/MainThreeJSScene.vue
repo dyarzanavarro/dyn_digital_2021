@@ -3,8 +3,7 @@
     <v-container
       id="scene-container"
       ref="sceneContainer"
-      style="height: 100vh"
-      class="webgl"
+      style="height: 40vh; position: relative"
       fluid
       ma-0
       pa-0
@@ -16,8 +15,8 @@
 <script>
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DragControls } from "three/examples/jsm/controls/DragControls.js";
-
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { TransformControls } from "three/examples/jsm/controls/TransformControls.js";
 export default {
   name: "ThreeTest",
   data() {
@@ -32,37 +31,32 @@ export default {
     init() {
       // set container
       this.container = this.$refs.sceneContainer;
-
       // add camera
       const fov = 50; // Field of view
       const aspect = this.container.clientWidth / this.container.clientHeight;
       const near = 0.0001; // the near clipping plane
       const far = 20000; // the far clipping plane
       const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-
       camera.position.set(1, 0.3, 3.8);
       this.camera = camera;
       // create scene
       this.scene = new THREE.Scene();
       this.scene.background = new THREE.Color(0xf5f7fa);
-
       // add lights
       const ambientLight = new THREE.HemisphereLight(
         0xb1e1ff, // bright sky color
         0xb97a20, // dim ground color
-        0.4 // intensity
+        0.1 // intensity
       );
-      const mainLight = new THREE.HemisphereLight(0xffffff, 0.4);
+      const mainLight = new THREE.HemisphereLight(0xffffff, 0.1);
       mainLight.position.set(20, 20, 20);
       this.scene.add(ambientLight, mainLight);
-
       // create renderer
       this.renderer = new THREE.WebGLRenderer({ antialias: true });
       this.renderer.setSize(
         this.container.clientWidth,
         this.container.clientHeight
       );
-
       this.container.appendChild(this.renderer.domElement);
       // set aspect ratio to match the new browser window aspect ratio
       this.camera.aspect =
@@ -71,65 +65,74 @@ export default {
         this.container.clientWidth,
         this.container.clientHeight
       );
+      const sphere = new THREE.SphereGeometry(1.25, 14, 14);
+      const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
 
-      const sphere = new THREE.SphereGeometry(0.2, 8, 8);
+      const color1 = new THREE.Color(0xf5f50a);
+      const color2 = new THREE.Color(0xff058a);
+      const color3 = new THREE.Color(0x8023ea);
 
-      let color1 = new THREE.Color("#8023ea");
-      let color2 = new THREE.Color("#ff058a");
-      let color3 = new THREE.Color("#f5f50a");
+      sphere.computeBoundingBox();
+      var material = new THREE.ShaderMaterial({
+        uniforms: {
+          color1: {
+            value: color1,
+          },
+          color2: {
+            value: color2,
+          },
+          color3: {
+            value: color3,
+          },
+          bboxMin: {
+            value: sphere.boundingBox.min,
+          },
+          bboxMax: {
+            value: sphere.boundingBox.max,
+          },
+        },
+        vertexShader: `
+    uniform vec3 bboxMin;
+    uniform vec3 bboxMax;
+  
+    varying vec2 vUv;
 
-      const material = new THREE.MeshNormalMaterial({
-        opacity: 0.8,
-        transparent: true,
+    void main() {
+      vUv.y = (position.y - bboxMin.y) / (bboxMax.y - bboxMin.y);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+    }
+  `,
+        fragmentShader: `
+    uniform vec3 color1;
+    uniform vec3 color2;
+     uniform vec3 color3;
+  
+    varying vec2 vUv;
+    
+    void main() {
+      
+      gl_FragColor = vec4(mix(color1, color2, vUv.y), 1.0);
+    }
+  `,
       });
-      sphere.attributes.position.needsUpdate = true;
-
       const earthmesh = new THREE.Mesh(sphere, material);
 
-      earthmesh.position.set(1, 1.1, 0);
-      //this.scene.add(earthmesh);
-
-      if (earthmesh.isMesh) {
-        const position = earthmesh.geometry.attributes.position;
-        const vector = new THREE.Vector3();
-
-        for (let i = 0, l = position.count; i < l; i++)
-          vector.fromBufferAttribute(position, i);
-        vector.applyMatrix4(earthmesh.matrixWorld);
-        console.log(vector);
-        vector.length = 0;
-
-        this.controls = new DragControls(
-          [earthmesh],
-          this.camera,
-          this.renderer.domElement
-        );
-      }
-
-      //loader
-
-      const loader = new GLTFLoader();
-      loader.load("model/scene.gltf", (gltf) => {
-        gltf.scene.position.set(1.2, 2, -5);
-        gltf.scene.scale.set(0.006, 0.006, 0.006);
-        gltf.scene.rotation.y += 0;
-        this.scene.add(gltf.scene);
-      });
-
-      /*gltf.position.y = Math.sin(time) * 0.2 + 5;
-          gltf.rotation.x = time * 0.05;
-          gltf.rotation.z = time * 0.51; 
-          this.scene.add(gltf.scene);
-        },
-        undefined,
-        undefined
-      );
-*/
-
+      earthmesh.position.set(1, 0.7, 0);
+      this.scene.add(earthmesh);
       this.renderer.setAnimationLoop(() => {
-        earthmesh.rotation.x += 0.01;
-        earthmesh.rotation.y += 0.01;
-
+        earthmesh.rotation.x += 0.02;
+        earthmesh.rotation.y += 0.02;
+        document.addEventListener("mousemove", onMouseMove);
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+        function onMouseMove(event) {
+          mouseX = event.clientX / windowHalfX;
+          mouseY = event.clientY / windowHalfY;
+        }
         this.render();
       });
     },
@@ -137,7 +140,6 @@ export default {
       this.renderer.render(this.scene, this.camera);
     },
   },
-
   mounted() {
     this.init();
   },

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-container class="pa-6"> </v-container>
+    <v-container class="pa-12">
+      <div class="text-h2 font-weight-bold">SteppingInto</div>
+    </v-container>
   </div>
 </template>
 

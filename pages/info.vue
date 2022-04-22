@@ -10,7 +10,10 @@
             I spend my time trying to think of solutions to problems and make
             your life easier. I’m also a somewhat normal adult and have a cute
             dog called
-            <NuxtLink :to="{ path: '/info', hash: '#boo' }">
+            <NuxtLink
+              class="grey--text text--darken-4"
+              :to="{ path: '/info', hash: '#boo' }"
+            >
               <span class="specialLinks">Boo</span></NuxtLink
             >
           </div>
@@ -120,7 +123,6 @@ export default {};
 </script>
 <style>
 .specialLinks {
-  color: #892cdc;
 }
 
 .roundedImg {

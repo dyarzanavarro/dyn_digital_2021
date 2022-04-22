@@ -3,7 +3,7 @@
     <v-container class="pa-8">
       <v-row>
         <v-col cols="12" xs="12" lg="8" md="8" class="px-o" xl="10">
-          <div class="text-h2 font-weight-bold">
+          <div class="text-h3 font-weight-bold">
             Visualize, Craft & Improve your business
           </div>
           <div class="text-h6 mt-3">

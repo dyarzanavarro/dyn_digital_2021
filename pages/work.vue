@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container class="pa-12">
-      <div class="text-h2 font-weight-bold">My projects & products</div>
+      <div class="text-h3 font-weight-bold">My projects & products</div>
       <div class="text-h6 mt-3">
         I'll try to give a quick intro on what my specific roles in this
         products were.

@@ -1,60 +1,45 @@
 <template>
-  <v-container class="Hero" fluid>
-    <v-row align="center" justify="center">
-      <v-col class="md-6">
-        <h1 class="md-5" style="color: #f5f7fa">I'm interested in stuff</h1>
-        <p class="md-6" style="color: #f5f7fa">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde porro id
-          saepe. Earum voluptate recusandae aperiam quos nam, perspiciatis
-          ducimus et dolore sint, placeat quod assumenda, temporibus omnis!
-          Atque, vero.
-        </p>
-        <v-btn dark color="#8A00FF" class="btn">I like stuff too</v-btn>
-      </v-col>
-
-      <v-col>
-        <v-img
-          :src="require('../assets/img/collage_nobg.png')"
-          max-height="350"
-          max-width="550"
-          alt="landingImage of Daniel"
-        />
-      </v-col>
-    </v-row>
-
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-card
-            class="my-10 pa-12"
-            v-for="card in cards"
-            :key="card.index"
-            style="background-color: #37474f"
-          >
-            <v-card-title>
-              <h2 style="color: #f5f7fa">{{ card.title }}</h2>
+  <v-container>
+    <v-row dense>
+      <v-col
+        class="col-4 .col-sm-6 .col-md-8"
+        v-for="card in cards"
+        :key="card.index"
+        :cols="card.flex"
+      >
+        <v-lazy
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition-group="fade-transition"
+        >
+          <div>
+            <v-card class="my-2 mx-auto">
+              <v-img
+                height="360"
+                :src="require(`@/assets/img/${card.src.toLowerCase()}.png`)"
+              ></v-img>
+            </v-card>
+            <v-card-title class="pa-2">
+              <h2>{{ card.title }}</h2>
             </v-card-title>
             <v-card-text>
               <v-row style="align: center" class="text-left">
-                <v-col class="md-6">
-                  <h2 style="color: #f5f7fa">{{ card.subtitle }}</h2>
-                  <p style="color: #f5f7fa">
+                <v-col class="pa-2">
+                  <h2 class="blue-grey--text text--lighten-1 py-2">
+                    {{ card.subtitle }}
+                  </h2>
+                  <p>
                     {{ card.content }}
                   </p>
                 </v-col>
-                <v-col :class="card.order" order="first">
-                  <v-img
-                    :src="card.img"
-                    alt="landingImage of Daniel"
-                    style="max-width: 300px"
-                  />
-                </v-col>
               </v-row>
             </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+          </div>
+        </v-lazy>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -64,33 +49,69 @@ export default {
     return {
       cards: [
         {
-          title: "card 1",
-          subtitle: "cardtitle1",
+          title: "yallo",
+          subtitle: "eCommerce Redesign & Replattforming",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit  Unnde porro id saepe. Earum voluptate recusandae aperiam quosnam, perspiciatis ducimus et dolore sint, placeat quod assumenda, temporibus omnis! Atque, vero.",
-          img: "../textures/collage.png",
-          order: "order-md-6",
+            "Redesign & Designsysteme der Ecommerce Brands yallo, lebara & swype;HTML, CSS & Javascript in Angular für kleinere oder grössere «QuickFixes»; Scrum Product Owner Web Development Team; Design Thinking Workshops, User Research (qualitative & quantitative)",
+          order: "order-md-12",
+          flex: 12,
+          src: "yol_2-min",
         },
         {
-          title: "card 2",
-          subtitle: "cardtitle1",
+          title: "Sunrise",
+          subtitle: "eCommerce Workflow & A/B Testing",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit  Unnde porro id saepe. Earum voluptate recusandae aperiam quosnam, perspiciatis ducimus et dolore sint, placeat quod assumenda, temporibus omnis! Atque, vero.",
-          img: "../textures/collage_nobg.png",
+            "Integriert im UX Team, Arbeit an Design / Aufbau von Projekten; A/B Testing in Adobe Suite (Target), Analyse und Empfehlungen; HTML, CSS & Jquery für kleinere oder grössere «QuickFixes»; Design Thinking Workshops, User Research (qualitative & quantitative)",
+          flex: 6,
+          src: "sunrise_1-min",
         },
         {
-          title: "card 3",
-          subtitle: "cardtitle1",
+          title: "psych",
+          subtitle: "Design, Development & Setup",
           content:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit  Unnde porro id saepe. Earum voluptate recusandae aperiam quosnam, perspiciatis ducimus et dolore sint, placeat quod assumenda, temporibus omnis! Atque, vero.",
-          img: "../textures/collage.png",
-          order: "order-md-6",
+            "revamp, styling, backend & cms: psychology students needed a new start ",
+          order: "order-md-12",
+          flex: 6,
+          src: "psych_isometric-min",
+        },
+        {
+          title: "Study 4",
+          subtitle: "Design, Development & Setup",
+          content:
+            "Does a nice house even exist if it's not displayed in a complicated layout? ",
+          order: "order-md-12",
+          flex: 6,
+          src: "casa_1",
+        },
+        {
+          title: "stepping Into",
+          subtitle: "Design, Development & Setup",
+          content:
+            "new site, styling, frontend, backend & cms: A university wanted a place for diversity",
+          order: "order-md-12",
+          flex: 6,
+          src: "casa_1",
         },
       ],
     };
+  },
+  computed: {
+    /*    imageSrc() {
+      var images = require.context("../assets/img/", false, /\.png$/);
+      return images("./" + this.cards + ".png");
+    }, */
   },
 };
 </script>
 
 <style scoped>
+.card {
+  transition: box-shadow 0.3s ease 0s, opacity 200ms ease 0s,
+    transform 300ms ease 0s;
+  opacity: 1;
+  transform: translateX(0px) translateY(0px) translateZ(0px) scaleX(1.05)
+    scaleY(1.1) scaleZ(1);
+  display: block;
+  transform-style: preserve-3d;
+}
 </style>

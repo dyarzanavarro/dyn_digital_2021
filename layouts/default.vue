@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 .app {
   background: $background !important;
-  font-family: "Nunito";
+  font-family: "Roboto";
   overflow-x: hidden;
 }
 h1 {

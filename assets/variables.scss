@@ -14,20 +14,31 @@ $primary: #AD1457;
 $secondary: #892cdc;
 $tertiary: #52057b;
 $text-field-line-height: 3rem;
-$body-font-family: 'Nunito';
-$font-family: 'Nunito';
+$body-font-family: 'Roboto';
+$font-family: 'Roboto';
+$title-font-family: 'Jost', sans-serif !important;
 $material-light: (
   'background': #f5f7fa
 );
 
 .v-application {
-  [class*='text-'] {
-    font-family: $font-family;
+  [class*='text-h1'] {
+    font-family: $title-font-family !important;
+    font-size: 6.2vw  !important;
+    letter-spacing: -0.01em !important;
+    line-height: 7vw;
+  }
+  [class*='text-h4'] {
+        font-size: 4vw !important;
+        line-height: 4vw;
   }
   font-family: $font-family;
+
+  
 }
 
 a{
   text-decoration: none;
 }
+
 

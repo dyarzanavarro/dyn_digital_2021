@@ -18,7 +18,7 @@ export default {
 <style lang="scss" scoped>
 .app {
   background: $background;
-  font-family: "Nunito";
+  font-family: "Roboto";
   overflow-x: hidden;
 }
 html,

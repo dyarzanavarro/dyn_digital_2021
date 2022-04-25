@@ -39,4 +39,7 @@ export default {
 .avatarLogo {
   background-image: linear-gradient(to bottom left, #f5f50a, #ff058a, #8023ea);
 }
+.navTitle {
+  color: $primary;
+}
 </style>

@@ -3,14 +3,17 @@
     <v-container class="pa-8">
       <v-row>
         <v-col cols="12" xs="12" lg="8" md="8" class="px-o" xl="10">
-          <div class="text-h2 font-weight-bold">
+          <div class="text-h3 font-weight-bold">
             Visualize, Craft & Improve your business
           </div>
           <div class="text-h6 mt-3">
             I spend my time trying to think of solutions to problems and make
             your life easier. I’m also a somewhat normal adult and have a cute
             dog called
-            <NuxtLink :to="{ path: '/info', hash: '#boo' }">
+            <NuxtLink
+              class="grey--text text--darken-4"
+              :to="{ path: '/info', hash: '#boo' }"
+            >
               <span class="specialLinks">Boo</span></NuxtLink
             >
           </div>
@@ -120,7 +123,6 @@ export default {};
 </script>
 <style>
 .specialLinks {
-  color: #892cdc;
 }
 
 .roundedImg {

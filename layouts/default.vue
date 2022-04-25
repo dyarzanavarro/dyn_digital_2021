@@ -2,7 +2,7 @@
   <v-app class="app">
     <Navbar app style="z-index: 999" />
     <v-main fluid class="app">
-      <nuxt class="ma-0 pa-0" />
+      <nuxt />
     </v-main>
     <Footer />
   </v-app>

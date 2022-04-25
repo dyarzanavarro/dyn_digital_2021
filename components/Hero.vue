@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <v-row dense>
       <v-col
         cols="12"
@@ -44,7 +44,7 @@
         </NuxtLink>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="pa-12">
+    <v-container class="pa-8">
       <v-row dense>
         <v-col cols="12" sm="3" md="6" lg="6">
           <div class="text-h3 font-weight-bold">
@@ -14,12 +14,11 @@
           <MainThreeJSScene />
         </v-col>
       </v-row>
-    </v-container>
-    <v-container class="pb-12">
-      <div class="text-h3 font-weight-bold pa-6">
-        Some products I've worked on
+      <div class="py-6">
+        <div class="text-h3 font-weight-bold">Some products I've worked on</div>
+        <SectionChips />
+        <Hero />
       </div>
-      <Hero />
     </v-container>
   </div>
 </template>
@@ -28,11 +27,13 @@
 <script>
 import Hero from "../components/Hero.vue";
 import MainThreeJSScene from "../components/MainThreeJSScene.vue";
+import SectionChips from "../components/SectionChips.vue";
 
 export default {
   components: {
     Hero,
     MainThreeJSScene,
+    SectionChips,
   },
 };
 </script>

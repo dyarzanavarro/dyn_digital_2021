@@ -47,6 +47,8 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
 
+    '@nuxtjs/robots',
+
     [
       '@nuxtjs/firebase',
       {
@@ -67,6 +69,11 @@ export default {
 
   ],
 
+  robots: {
+    UserAgent: '*',
+    Disallow: '/admin',
+    Allow: '/'
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 

@@ -22,7 +22,7 @@ export default {
   data: () => ({
     tags: [
       {
-        title: "E-commerce",
+        title: "Ecommerce",
         color: "purple",
       },
       {
@@ -39,7 +39,7 @@ export default {
       },
       {
         title: "Fun",
-        color: "yellow lighten-1",
+        color: "yellow",
       },
     ],
   }),

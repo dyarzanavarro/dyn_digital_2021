@@ -65,7 +65,7 @@ export default {
         this.container.clientWidth,
         this.container.clientHeight
       );
-      const sphere = new THREE.SphereGeometry(1.25, 14, 14);
+      const sphere = new THREE.SphereGeometry(2, 14, 14);
       const texture = new THREE.TextureLoader().load("textures/earthmap1.jpg");
 
       const color1 = new THREE.Color(0xf5f50a);

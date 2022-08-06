@@ -47,6 +47,9 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
 
+    '@nuxtjs/sitemap',
+
+
     '@nuxtjs/robots',
 
     [
@@ -69,6 +72,12 @@ export default {
 
   ],
 
+  sitemap: {
+    hostname: 'https://danielyarzanavarro.me',
+    lastmod: '2022-05-13',
+
+  },
+
   robots: {
     UserAgent: '*',
     Disallow: '/admin',
@@ -85,7 +94,7 @@ export default {
   },
 
   server: {
-    host: "192.168.1.158",
+    //host: "192.168.1.158",
     https: {
       key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
       cert: fs.readFileSync(path.resolve(__dirname, 'server.crt'))
